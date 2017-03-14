@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Diagrame</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+
+
+
+<!-- 1 -->
+<svg width="100" height="100">
+	<circle r="30" cx="50" cy="50">
+</svg>
+
+<style>
+	body {
+		text-align: center;
+	}
+</style>
+
+<!-- 2 -->
+<svg width="100" height="100">
+	<circle class="circle2" r="30" cx="50" cy="50"><!-- квадрат 50х50; круг с радиусом 30 -->
+</svg>
+
+<style>
+	.circle2 {
+		fill: yellowgreen;/* бекграунд круга*/
+		stroke: #655;/* бекграунд обводки */
+		stroke-width: 30;/* ширина обводки 30 */
+	}
+</style>
+
+<!-- 3 -->
+<svg width="100" height="100">
+	<circle class="circle3" r="30" cx="50" cy="50">
+</svg>
+
+<style>
+	.circle3 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 30;
+		stroke-dasharray: 22 10;/* длина штриха 22; промежуток 10 */
+	}
+</style>
+
+<!-- 4 -->
+<svg width="100" height="100">
+	<circle class="circle4" r="30" cx="50" cy="50">
+</svg>
+
+<style>
+	.circle4 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 30;
+		stroke-dasharray: 0 189;/* обводка с нулевой ширеной и зазором, равным или превышающим длину окружности нашего круга (C=2Пr) C=2П*30=189 */
+	}
+</style>
+
+<!-- 5 -->
+<svg width="100" height="100">
+	<circle class="circle5" r="30" cx="50" cy="50">
+</svg>
+
+<style>
+	.circle5 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 30;
+		stroke-dasharray: 40 189;/* обводка от 40 до 150 */
+		stroke-dasharray: 150 189;/* обводка от 40 до 150 */
+	}
+</style>
+
+<!-- 6 -->
+<svg width="100" height="100">
+	<circle class="circle6" r="25" cx="50" cy="50"><!-- уменьшим радиус до 25 -->
+</svg>
+
+<style>
+	.circle6 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 50;/* увеличим ширину до 50, так как stroke должен быть в 2 раза больше circle r="25" */
+		stroke-dasharray: 40 158;/* обводка с зазором, равным или превышающим длину окружности нашего круга (C=2Пr) C=2П*25=158 */
+	}
+</style>
+
+<!-- 7 -->
+<svg class="svg7" width="100" height="100"><!-- определим стили для svg, чтобы заполнить круг -->
+	<circle class="circle7" r="25" cx="50" cy="50">
+</svg>
+
+<style>
+	.circle7 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 50;
+		stroke-dasharray: 40 158;
+	}
+	.svg7 {
+		transform: rotate(-90deg);
+		background: yellowgreen;
+		background: #f00;
+		border-radius: 50%;
+	}
+</style>
+
+<!-- 8 -->
+<svg class="svg8" width="100" height="100"><!-- определим стили для svg, чтобы заполнить круг -->
+	<circle class="circle8" r="25" cx="50" cy="50">
+</svg>
+
+<style>
+	.circle8 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 50;
+		stroke-dasharray: 0 158;
+		animation: fillup8 5s linear infinite;/* добавим анимацию к-я увеличивает обводку от 0 до 150 */
+	}
+	.svg8 {
+		transform: rotate(-90deg);
+		background: yellowgreen;
+		border-radius: 50%;
+	}
+	@keyframes fillup8 {
+		to {stroke-dasharray: 158 158;}
+	}
+</style>
+
+<br>
+<br>
+
+<!-- 9 -->
+<div class="diagrame">
+	<svg class="svg9" viewBox="0 0 32 32"><!-- viewBox задает габаритные размеры, чтобы размеру svg дать резиновость, поэтому добавим блок diagrame чтобы очраничить svg -->
+		<circle class="circle9" r="16" cx="16" cy="16"><!-- 16=(100/2П) - это точный радиус круга, для того чтобы длина окружности была равной 100, что позволит задавать значение stroke-dasharray в процентах -->
+	</svg>
+</div>
+
+<style>
+	.diagrame {
+		width: 5%;
+		margin: 0 auto;
+	}
+	.circle9 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 32;
+		stroke-dasharray: 38 100;/* 38% */
+		animation: fillup9 5s linear infinite;
+	}
+	.svg9 {
+		width: 100%;
+		height: 100%;
+		transform: rotate(-90deg);
+		background: yellowgreen;
+		border-radius: 50%;
+	}
+	@keyframes fillup9 {
+		to {stroke-dasharray: 100 100;}
+	}
+</style>
+
+<!-- 10 -->
+<div class="diagrame10">20%</div>
+<div class="diagrame10">60%</div>
+
+<style>
+	.diagrame10 {
+		width: 5%;
+		margin: 0 auto;
+	}
+	.circle10 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 32;
+		/* stroke-dasharray: 0 100;/* 38% */
+		animation: fillup10 5s linear infinite;
+	}
+	.svg10 {
+		width: 100%;
+		height: 100%;
+		transform: rotate(-90deg);
+		background: yellowgreen;
+		border-radius: 50%;
+	}
+	@keyframes fillup10 {
+		to {stroke-dasharray: 100 100;}
+	}
+</style>
+<script>
+	function $$(selector, context) {
+		context = context || document;
+		var elements = context.querySelectorAll(selector);
+		return Array.prototype.slice.call(elements);
+	}
+
+	$$('.diagrame10').forEach(function(diagrame) {
+		var p = parseFloat(diagrame.textContent);
+		var NS = "http://www.w3.org/2000/svg";
+		var svg = document.createElementNS(NS, "svg");
+		var circle = document.createElementNS(NS, "circle");
+		var title = document.createElementNS(NS, "title");
+		
+		circle.classList.add("circle10");
+		circle.setAttribute("r", 16);
+		circle.setAttribute("cx", 16);
+		circle.setAttribute("cy", 16);
+		circle.setAttribute("stroke-dasharray", p + " 100");
+		
+		svg.setAttribute("viewBox", "0 0 32 32");
+		svg.classList.add("svg10");
+		title.textContent = diagrame.textContent;
+		diagrame.textContent = '';
+		svg.appendChild(title);
+		svg.appendChild(circle);
+		diagrame.appendChild(svg);
+	});
+</script>
+
+<!-- 11 -->
+<div class="diagrame11">
+	<div class="text-svg text11">20%</div>
+	<div class="text-svg text12">35%</div>
+	<div class="text-svg text13">45%</div>
+	<svg class="svg11" viewBox="0 0 32 32">
+		<circle class="circle11" r="16" cx="16" cy="16"></circle>
+		<circle class="circle12" r="16" cx="16" cy="16"></circle>
+	</svg>
+</div>
+
+<style>
+	.diagrame11 {
+		width: 20%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+	.text-svg {
+		position: absolute;
+		z-index: 2;
+		transform:scale(0);
+		animation: text-svg 1s linear forwards;
+		animation-delay: 2s;
+	}
+	.text11 {
+		top: 20%;
+		right: 20%;
+		font-size: 30px;
+		color: #fff;
+	}
+	.text12 {
+		top: 60%;
+		right: 18%;
+		font-size: 40px;
+		color: #fff;
+	}
+	.text13 {
+		top: 35%;
+		left: 8%;
+		font-size: 50px;
+		color: #fff;
+	}
+	.circle11 {
+		fill: yellowgreen;
+		stroke: #655;
+		stroke-width: 32;
+		stroke-dasharray: 0 100;/* 38% */
+		animation: fillup11 2s linear forwards;
+
+	}
+	.circle12 {
+		fill: transparent;
+		stroke: #808000;
+		stroke-width: 32;
+		stroke-dasharray: 0 100;/* 38% */
+		animation: fillup12 2s linear forwards;
+
+	}
+	.svg11 {
+		width: 100%;
+		height: 100%;
+		transform: rotate(-90deg);
+		background: yellowgreen;
+		border-radius: 50%;
+	}
+	@keyframes fillup11 {
+		to {stroke-dasharray: 55 100;}
+	}
+	@keyframes fillup12 {
+		to {stroke-dasharray: 20 100;}
+	}
+	@keyframes text-svg {
+		0% {opacity:0;transform:scale(0);}
+		50% {opacity:0.3;transform:scale(1.5);}
+		100% {opacity:1;transform:scale(1);}
+	}
+</style>
+
+
+</body>
+</html>
